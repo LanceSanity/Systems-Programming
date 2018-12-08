@@ -165,7 +165,8 @@ int tmin(void) {
  *   Rating: 1
  */
 int isTmax(int x) {
-  return 2;
+    /* Compare the complement of tmin */
+    return ~tmin() == x;
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
