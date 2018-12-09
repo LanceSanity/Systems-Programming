@@ -187,7 +187,8 @@ int allOddBits(int x) {
  *   Rating: 2
  */
 int negate(int x) {
-  return 2;
+    /* Take the two's complement (invert and add 1) */
+    return ~x + 1;
 }
 //3
 /* 
