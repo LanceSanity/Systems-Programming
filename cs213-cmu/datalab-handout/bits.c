@@ -227,7 +227,8 @@ int conditional(int x, int y, int z) {
  *   Rating: 3
  */
 int isLessOrEqual(int x, int y) {
-  return 2;
+    /* Comparison predicate from Hacker's Delight */
+    return 1 & (((x | ~y) & ((x ^ y) | (~y + x))) >> 31);
 }
 //4
 /* 
