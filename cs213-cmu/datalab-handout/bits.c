@@ -154,7 +154,7 @@ int bitXor(int x, int y) {
  */
 int tmin(void) {
     /* Set most significant bit using left shift */
-    return 1 << (sizeof(int) * 8 - 1);
+    return 1 << 31;
 }
 //2
 /*
@@ -177,7 +177,7 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-    /* Compared bit halves with AND. Used 0xAA to check last byte for odd bits */
+    /* Compared bit halves with AND. Used 0xAA mask to see if odd bits set */
     x &= x >> 16;
     x &= x >> 8;
     return !((x & 0xAA) ^ 0xAA);
@@ -204,7 +204,10 @@ int negate(int x) {
  *   Rating: 3
  */
 int isAsciiDigit(int x) {
-  return 2;
+    /* Comparison predicate from Hacker's Delight */
+    int p = (x | ~0x39) & ((x ^ 0x39) | (~0x39 + x));
+    int q = (0x30 | ~x) & ((0x30 ^ x) | (~x + 0x30));
+    return 1 & ((p & q) >> 31);
 }
 /* 
  * conditional - same as x ? y : z 
