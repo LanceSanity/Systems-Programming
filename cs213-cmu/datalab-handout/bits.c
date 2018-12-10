@@ -143,7 +143,7 @@ NOTES:
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-    /* Used combination of NAND gates */
+    /* Used combination of NAND gates, read about De Morgan's law */
     return ~(~x & ~y) & ~(x & y);
 }
 /* 
@@ -177,7 +177,10 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  return 2;
+    /* Compared bit halves with AND. Used 0xAA to check last byte for odd bits */
+    x &= x >> 16;
+    x &= x >> 8;
+    return !((x & 0xAA) ^ 0xAA);
 }
 /* 
  * negate - return -x 
@@ -187,7 +190,7 @@ int allOddBits(int x) {
  *   Rating: 2
  */
 int negate(int x) {
-    /* Take the two's complement (invert and add 1) */
+    /* Two's-Complement Negation 2.3.3 */
     return ~x + 1;
 }
 //3
