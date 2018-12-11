@@ -217,7 +217,12 @@ int isAsciiDigit(int x) {
  *   Rating: 3
  */
 int conditional(int x, int y, int z) {
-  return 2;
+    /* Convert x to mask of 1s if x, 0 otherwise */
+    x = !!x;
+    x = ~x + 1;
+    y &= x;
+    z = ~x & z;
+    return y | z;
 }
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
