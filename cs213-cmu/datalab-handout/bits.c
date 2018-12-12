@@ -220,9 +220,7 @@ int conditional(int x, int y, int z) {
     /* Convert x to mask of 1s if x, 0 otherwise */
     x = !!x;
     x = ~x + 1;
-    y &= x;
-    z = ~x & z;
-    return y | z;
+    return (x & y) | (~x & z);
 }
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
@@ -245,7 +243,8 @@ int isLessOrEqual(int x, int y) {
  *   Rating: 4 
  */
 int logicalNeg(int x) {
-  return 2;
+    /* Negates positive nums to flip sign bit. negate(0) stays 0. */
+    return ((x >> 31) | (negate(x) >> 31)) + 1;
 }
 /* howManyBits - return the minimum number of bits required to represent x in
  *             two's complement
