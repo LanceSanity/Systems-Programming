@@ -243,7 +243,7 @@ int isLessOrEqual(int x, int y) {
  *   Rating: 4 
  */
 int logicalNeg(int x) {
-    /* Negates positive nums to flip sign bit. negate(0) stays 0. */
+    /* Use negate and arithmetic shift to get -1 or 0. then add 1 */
     return ((x >> 31) | (negate(x) >> 31)) + 1;
 }
 /* howManyBits - return the minimum number of bits required to represent x in
