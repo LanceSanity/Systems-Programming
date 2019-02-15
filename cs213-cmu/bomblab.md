@@ -7,11 +7,11 @@ forces them to learn how to use a debugger. It's also great fun. A legendary lab
 
 ## Phase 1
 Helpful commands:
->* `disas <function name>`
->* `x/s <memory>` (examine contents of memory in string format)
->* `print $<register>` (print value stored in a register)
->* `break <function name>` (set breakpoint) or `b *<instruction address>` (asterisk to dereference the address)
->* `si` (step through a single instruction)
+- `disas <function name>`
+- `x/s <memory>` (examine contents of memory in string format)
+- `print $<register>` (print value stored in a register)
+- `break <function name>` (set breakpoint) or `b *<instruction address>` (asterisk to dereference the address)
+- `si` (step through a single instruction)
 
 Tips to solve: disassemble main to get a better idea of what's going on. Basically, the program initializes the bomb, prompts
 user for input with `<read_line>`, and begins phase_1. It might be helpful to know which register contains your input. Next, 
@@ -19,12 +19,12 @@ disassemble phase_1. To jump past the `<explode_bomb>` function call, the input 
 
 ## Phase 2
 More helpful commands:
->* `info registers` or `i r` (get register values)
->* `print *<memory address>` (prints value contained in an address)
->* `set <$register> = <value>` (you can use this to set the value of a register. useful if a `cmp` will fail, but you want to keep stepping in the function)
+- `info registers` or `i r` (get register values)
+- `print *<memory address>` (prints value contained in an address)
+- `set <$register> = <value>` (you can use this to set the value of a register. useful if a `cmp` will fail, but you want to keep stepping in the function)
 
 Tips: step through `<read_six_numbers>` to figure out the first condition. Next, look at the jumps and comparisons. If you follow the jumps, you'd notice that it is a loop. What values are being compared? When a `cmp` fails, is the next instruction to jump to `<explode_bomb>`? Which register holds the arguments?
 
 New operation and operand specifier:
->* `lea` (load effective address) copies an address to a location (rather than read from that address like `mov`)
->* `(<register>)` is a memory reference
+- `lea` (load effective address) copies an address to a location (rather than read from that address like `mov`)
+- `(<register>)` is a memory reference
